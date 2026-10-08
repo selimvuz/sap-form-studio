@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xfa generator="Synthetic_Preservation_Test" APIVersion="3.3.0"?>
+<!-- Independently authored test fixture; not certified or tested with SAP ADS. -->
+<xdp:xdp xmlns:xdp="http://ns.adobe.com/xdp/" xmlns:vendor="urn:example:vendor" uuid="preserve-this-uuid" timeStamp='2026-10-07T00:00:00Z'>
+  <template xmlns="http://www.xfa.org/schema/xfa-template/3.3/" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.1">
+    <?formServer defaultPDFRenderFormat acrobat10.0dynamic?>
+    <subform name="Form" layout="position" locale="en_US">
+      <pageSet>
+        <pageArea name="Page1" id="page-master">
+          <contentArea x="10mm" y="12mm" w="190mm" h="273mm"/>
+          <medium stock="a4" short="210mm" long="297mm"/>
+        </pageArea>
+      </pageSet>
+      <subform name="Body" layout="position" x="6mm" y="7mm" w="180mm" h="250mm">
+        <draw name="Title" id="title-xfa" x='5mm' y="8mm" w="80mm" h="10mm" vendor:custom="alpha &amp; beta">
+          <value><text xliff:rid="keep-translation-key">Before &amp; after</text></value>
+          <font typeface="Helvetica" size="14pt" weight="bold"/>
+          <para hAlign="left"/>
+          <!-- Keep this comment in an edited object. -->
+          <?templateDesigner expand 1?>
+          <vendor:customData order='unaltered'>Keep &amp; preserve &#65;.</vendor:customData>
+        </draw>
+        <field name="ExistingField" id="existing-field" x="5mm" y="22mm" w="65mm" h="9mm">
+          <ui><textEdit/></ui>
+          <value><text/></value>
+          <font size="10pt"/>
+          <para hAlign="left"/>
+          <bind match="dataRef" ref="$.HEADER.VBELN"/>
+        </field>
+        <subform name="Nested" layout="position" x="3mm" y="4mm" w="170mm" h="200mm">
+          <draw name="NestedText" x="5mm" y="8mm" w="60mm" h="9mm">
+            <value><text>Nested label</text></value>
+            <font size="10pt"/>
+            <para hAlign="left"/>
+          </draw>
+        </subform>
+        <draw name="UnsupportedImage" x="120mm" y="10mm" w="20mm" h="20mm">
+          <value><image contentType="image/png">AA==</image></value>
+        </draw>
+      </subform>
+      <?renderCache.subset "Helvetica" 0 0 UTF-16 2 4 0041?>
+    </subform>
+    <?templateDesigner FormTargetVersion 33?>
+  </template>
+  <config xmlns="http://www.xfa.org/schema/xci/3.0/"><present><pdf><version>1.7</version></pdf></present></config>
+  <connectionSet xmlns="http://www.xfa.org/schema/xfa-connection-set/2.8/"><xsdConnection name="preserve"><uri>original.xsd</uri><rootElement>FORM_DATA</rootElement></xsdConnection></connectionSet>
+  <xfa:datasets xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/"><xfa:data><FORM_DATA><HEADER><VBELN>9000012345</VBELN></HEADER></FORM_DATA></xfa:data></xfa:datasets>
+  <localeSet xmlns="http://www.xfa.org/schema/xfa-locale-set/2.7/"><locale name="en_US"/></localeSet>
+  <vendor:opaque z='last' a="first"><![CDATA[<never-reformat/> & untouched]]><?vendor custom="keep"?><!--opaque-comment--></vendor:opaque>
+  <x:xmpmeta xmlns:x="adobe:ns:meta/"><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><rdf:Description vendor:tag="metadata"/></rdf:RDF></x:xmpmeta>
+</xdp:xdp>

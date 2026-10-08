@@ -1,0 +1,22 @@
+{
+  "name": "sap-form-designer-poc",
+  "version": "0.1.0",
+  "description": "A local visual editor for SAP Adobe Forms XDP layouts with source-preserving XML export.",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/selimvuz/sap-form-studio.git" },
+  "bugs": { "url": "https://github.com/selimvuz/sap-form-studio/issues" },
+  "homepage": "https://github.com/selimvuz/sap-form-studio#readme",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --configLoader runner",
+    "build": "tsc -b && vite build --configLoader runner && node scripts/build-standalone.mjs",
+    "preview": "vite preview --host 127.0.0.1 --configLoader runner",
+    "test": "vitest run --configLoader runner",
+    "test:watch": "vitest --configLoader runner",
+    "test:standalone": "node scripts/verify-standalone.mjs"
+  },
+  "dependencies": { "react": "^19.1.1", "react-dom": "^19.1.1", "lucide-react": "^0.468.0" },
+  "devDependencies": { "@types/react": "^19.1.10", "@types/react-dom": "^19.1.9", "@vitejs/plugin-react": "^4.7.0", "typescript": "^5.9.2", "vite": "^6.3.5", "vitest": "^3.2.4", "jsdom": "^26.1.0", "@types/node": "^22.18.0", "esbuild": "npm:esbuild-wasm@0.25.11" },
+  "overrides": { "esbuild": "$esbuild" }
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="FORM_DATA">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="HEADER" type="InvoiceHeader"/>
+        <xs:element name="ITEMS" type="InvoiceItem" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="InvoiceHeader">
+    <xs:sequence>
+      <xs:element name="VBELN" type="xs:string"/>
+      <xs:element name="FKDAT" type="xs:date"/>
+      <xs:element name="KUNNR" type="xs:string"/>
+      <xs:element name="NETWR" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InvoiceItem">
+    <xs:sequence>
+      <xs:element name="POSNR" type="xs:string"/>
+      <xs:element name="MATNR" type="xs:string"/>
+      <xs:element name="ARKTX" type="xs:string"/>
+      <xs:element name="FKIMG" type="xs:decimal"/>
+      <xs:element name="NETWR" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

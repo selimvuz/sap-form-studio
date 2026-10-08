@@ -1,0 +1,45 @@
+name: Bug report
+description: Report a reproducible editor, preview, or XDP preservation problem.
+title: '[Bug]: '
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Share a small reproduction using the bundled samples when possible. If an XDP or XSD is needed, attach only a sanitized example that you are permitted to publish. Remove business secrets, personal data, credentials, internal system addresses, and proprietary form content from files, screenshots, and logs.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Describe the actual result and the result you expected.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Include the starting sample or layout, the exact edits, and any validation messages. For preservation bugs, identify the XML that changed unexpectedly.
+      placeholder: |
+        1. Open the bundled invoice or a sanitized fixture.
+        2. Change ...
+        3. Export ...
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include the app version or commit, browser and OS, and whether you opened FormStudio.html or used the development server. For SAP issues, add relevant SFP/ADS versions and distinguish import, activation, and rendering results.
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Sanitized example (optional)
+      description: Attach a minimal sanitized XDP/XSD or paste a short XML excerpt, and include sanitized preview data only if needed. A small ZIP is fine if GitHub does not accept the XML extension. Do not attach an unsanitized working project.
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Sharing check
+      options:
+        - label: I have removed confidential and personal information from this report and any attachments, and I am permitted to share them publicly.
+          required: true

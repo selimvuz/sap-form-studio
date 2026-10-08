@@ -1,0 +1,15 @@
+{
+  "FORM_DATA": {
+    "HEADER": {
+      "VBELN": "INV-2026-0042",
+      "FKDAT": "2026-10-07",
+      "KUNNR": "CUST-00128",
+      "NETWR": "4850.00"
+    },
+    "ITEMS": [
+      { "POSNR": "000010", "MATNR": "SRV-CLOUD-01", "ARKTX": "Cloud platform subscription", "FKIMG": 12, "NETWR": "2400.00" },
+      { "POSNR": "000020", "MATNR": "SRV-IMPL-02", "ARKTX": "Implementation services", "FKIMG": 5, "NETWR": "1750.00" },
+      { "POSNR": "000030", "MATNR": "SRV-SUPP-03", "ARKTX": "Premium support package", "FKIMG": 1, "NETWR": "700.00" }
+    ]
+  }
+}

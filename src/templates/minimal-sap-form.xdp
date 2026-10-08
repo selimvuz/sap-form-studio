@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?forma provenance="synthetic; not validated by SAP ADS"?>
+<xdp:xdp xmlns:xdp="http://ns.adobe.com/xdp/">
+<!-- FORMA_SYNTHETIC_TEMPLATE: authored for this PoC. Replace with an SFP-exported known-good layout for SAP testing. -->
+<template xmlns="http://www.xfa.org/schema/xfa-template/3.3/">
+  <subform name="Form" layout="tb" locale="en_US">
+    <pageSet><pageArea name="Page1" id="Page1"><contentArea x="0mm" y="0mm" w="210mm" h="297mm"/><medium stock="a4" short="210mm" long="297mm"/></pageArea></pageSet>
+    <subform name="Body" layout="position" w="210mm" h="297mm">
+      <bind match="none"/>
+      <draw name="Company" x="18mm" y="18mm" w="100mm" h="8mm"><value><text>NORTHSTAR / INDUSTRIAL</text></value><font typeface="Arial" size="10pt" weight="bold"/><para hAlign="left"/></draw>
+      <draw name="DocumentTitle" x="18mm" y="35mm" w="125mm" h="16mm"><value><text>Invoice</text></value><font typeface="Arial" size="32pt"/><para hAlign="left"/></draw>
+      <draw name="InvoiceLabel" x="142mm" y="36mm" w="50mm" h="6mm"><value><text>INVOICE NUMBER</text></value><font typeface="Arial" size="8pt" weight="bold"/><para hAlign="right"/></draw>
+      <field name="InvoiceNumber" x="135mm" y="44mm" w="57mm" h="9mm" access="readOnly"><ui><textEdit/></ui><font typeface="Arial" size="13pt"/><para hAlign="right"/><value><text/></value><bind match="dataRef" ref="$record.HEADER.VBELN"/></field>
+      <draw name="CustomerLabel" x="18mm" y="68mm" w="65mm" h="6mm"><value><text>BILL TO / CUSTOMER</text></value><font typeface="Arial" size="8pt" weight="bold"/></draw>
+      <field name="Customer" x="18mm" y="77mm" w="65mm" h="9mm" access="readOnly"><ui><textEdit/></ui><font typeface="Arial" size="12pt"/><value><text/></value><bind match="dataRef" ref="$record.HEADER.KUNNR"/></field>
+      <draw name="DateLabel" x="135mm" y="68mm" w="57mm" h="6mm"><value><text>ISSUED ON</text></value><font typeface="Arial" size="8pt" weight="bold"/><para hAlign="right"/></draw>
+      <field name="InvoiceDate" x="135mm" y="77mm" w="57mm" h="9mm" access="readOnly"><ui><textEdit/></ui><font typeface="Arial" size="12pt"/><para hAlign="right"/><value><text/></value><bind match="dataRef" ref="$record.HEADER.FKDAT"/></field>
+      <draw name="ItemsHeading" x="18mm" y="105mm" w="100mm" h="8mm"><value><text>Products &amp; services</text></value><font typeface="Arial" size="12pt" weight="bold"/></draw>
+      <subform name="ItemsTable" layout="table" x="18mm" y="120mm" w="174mm" columnWidths="14mm 32mm 78mm 18mm 32mm">
+        <bind match="none"/>
+        <subform name="HeaderRow" layout="row" h="10mm"><bind match="none"/>
+          <draw name="H1" w="14mm" h="10mm"><value><text>Item</text></value><font typeface="Arial" size="9pt" weight="bold"/><border><edge thickness="0.3pt"/></border></draw>
+          <draw name="H2" w="32mm" h="10mm"><value><text>Material</text></value><font typeface="Arial" size="9pt" weight="bold"/><border><edge thickness="0.3pt"/></border></draw>
+          <draw name="H3" w="78mm" h="10mm"><value><text>Description</text></value><font typeface="Arial" size="9pt" weight="bold"/><border><edge thickness="0.3pt"/></border></draw>
+          <draw name="H4" w="18mm" h="10mm"><value><text>Qty</text></value><font typeface="Arial" size="9pt" weight="bold"/><para hAlign="right"/><border><edge thickness="0.3pt"/></border></draw>
+          <draw name="H5" w="32mm" h="10mm"><value><text>Amount</text></value><font typeface="Arial" size="9pt" weight="bold"/><para hAlign="right"/><border><edge thickness="0.3pt"/></border></draw>
+        </subform>
+        <subform name="DetailRow" layout="row" h="10mm"><occur min="0" max="-1" initial="1"/><bind match="dataRef" ref="$record.ITEMS[*]"/>
+          <field name="Position" w="14mm" h="10mm" access="readOnly"><ui><textEdit/></ui><font typeface="Arial" size="9pt"/><value><text/></value><bind match="dataRef" ref="$.POSNR"/><border><edge thickness="0.3pt"/></border></field>
+          <field name="Material" w="32mm" h="10mm" access="readOnly"><ui><textEdit/></ui><font typeface="Arial" size="9pt"/><value><text/></value><bind match="dataRef" ref="$.MATNR"/><border><edge thickness="0.3pt"/></border></field>
+          <field name="Description" w="78mm" h="10mm" access="readOnly"><ui><textEdit/></ui><font typeface="Arial" size="9pt"/><value><text/></value><bind match="dataRef" ref="$.ARKTX"/><border><edge thickness="0.3pt"/></border></field>
+          <field name="Quantity" w="18mm" h="10mm" access="readOnly"><ui><textEdit/></ui><font typeface="Arial" size="9pt"/><para hAlign="right"/><value><text/></value><bind match="dataRef" ref="$.FKIMG"/><border><edge thickness="0.3pt"/></border></field>
+          <field name="NetAmount" w="32mm" h="10mm" access="readOnly"><ui><textEdit/></ui><font typeface="Arial" size="9pt"/><para hAlign="right"/><value><text/></value><bind match="dataRef" ref="$.NETWR"/><border><edge thickness="0.3pt"/></border></field>
+        </subform>
+      </subform>
+      <draw name="TotalLabel" x="110mm" y="193mm" w="40mm" h="9mm"><value><text>NET TOTAL</text></value><font typeface="Arial" size="9pt" weight="bold"/><para hAlign="right"/></draw>
+      <field name="NetTotal" x="150mm" y="192mm" w="42mm" h="11mm" access="readOnly"><ui><textEdit/></ui><font typeface="Arial" size="18pt"/><para hAlign="right"/><value><text/></value><bind match="dataRef" ref="$record.HEADER.NETWR"/></field>
+      <draw name="PaymentNote" x="18mm" y="230mm" w="174mm" h="12mm"><value><text>Thank you for your business.&#10;Please quote the invoice number with your payment.</text></value><font typeface="Arial" size="9pt"/></draw>
+      <draw name="Footer" x="18mm" y="275mm" w="174mm" h="7mm"><value><text>NORTHSTAR INDUSTRIAL                                  INVOICE / 01</text></value><font typeface="Arial" size="8pt"/></draw>
+    </subform>
+  </subform>
+</template>
+<config xmlns="http://www.xfa.org/schema/xci/3.0/"><present><pdf><version>1.7</version></pdf></present></config>
+<xfa:datasets xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/"><xfa:data/></xfa:datasets>
+</xdp:xdp>
